@@ -125,9 +125,9 @@ dge_B_protein_ratio = 100*(dge_B_protein/dge_B_protein2).loc[B_proteins,:]
 
 # Convert to long format for boxplot
 dge_T_protein_ratio = pd.melt(dge_T_protein_ratio.T.reset_index(),
-                              id_vars=["index"], value_vars=dge_T_protein_ratio.index)
+                              id_vars=["index"], value_vars=["CD3","CD28","PD1","CD147"])
 dge_B_protein_ratio = pd.melt(dge_B_protein_ratio.T.reset_index(),
-                              id_vars=["index"], value_vars=dge_B_protein_ratio.index)
+                              id_vars=["index"], value_vars=["B7","ICAM1","HLADR","PDL1","CD147"])
 
 # Plot
 fig, ax = plt.subplots(ncols=2, figsize=(4.9,3.2))

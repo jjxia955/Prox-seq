@@ -276,11 +276,8 @@ def estimateComplexes(data, non_complex=[], mean_cutoff=1, p_cutoff=0.05, p_adju
 
             # Check to see if the estimated abundance passes the mean_cutoff
             # Ha: sample mean > mean_cutoff
-            tval, tp = stats.ttest_1samp(temp_diff, mean_cutoff)
-            if (tval > 0):
-                tp_all[data.index[i]] = tp/2
-            else:
-                tp_all[data.index[i]] = 1-tp/2
+            tval, tp = stats.ttest_1samp(temp_diff, mean_cutoff, alternative = 'greater')
+            tp_all[data.index[i]] = tp
 
         # Convert p-values dictionary to series
         tp_all = pd.Series(tp_all)
